@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyApiAdapter {
     private static MyApiService API_SERVICE;
-    private static final String BASE_URL = "url_profe";
+    private static final String BASE_URL = "http://10.0.2.2:8080/myapp/minimo2/";
 
     public static MyApiService getApiService(){
 
@@ -20,11 +20,11 @@ public class MyApiAdapter {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);
 
-        String baseUrl = BASE_URL;
+
 
         if(API_SERVICE == null){
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
